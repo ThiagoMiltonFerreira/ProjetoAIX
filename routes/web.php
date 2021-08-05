@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/registerStudent', 'StudentController@index')->name('student')->middleware('auth');
+Route::get('/registerCourse', 'CourseController@index')->name('course')->middleware('auth');
+Route::get('/registerClass', 'ClassController@index')->name('class')->middleware('auth');
